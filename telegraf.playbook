@@ -1,0 +1,34 @@
+---
+- hosts: injester
+  tasks:
+  	- name: install the latest version of telegraf
+  	  yum: name=telegraf state=latest	
+  	 
+	- name: copy the logstash config  
+      git: repo=https://synopsis-devops@github.com/synopsis-devops/logstash.git dest=/etc/td-agent
+	
+	- name: start telegraf
+	  service: name=telegraf state=started
+
+
+
+  telegraf -config telegraf.conf
+
+
+Configuring Telegraf Create a configuration file with every input and output
+telegraf -sample-config > telegraf.conf
+
+
+- name: Add repository
+  yumrepo:
+    name: InfluxDB Repository - RHEL \$releasever
+    description: EPEL YUM repo
+    baseurl: https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+    gpgkey : https://repos.influxdata.com/influxdb.key
+    gpgcheck:yes
+
+
+
+
+
+
