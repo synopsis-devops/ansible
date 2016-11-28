@@ -85,6 +85,7 @@ vars_files:
 
 
 ##commnets :testing webhooks
+##comments can be messy
 As of Ansible 1.3, extra vars can be loaded from a JSON file with the @ syntax:
 text
 --extra-vars "@some_file.json"
